@@ -73,7 +73,7 @@ func formatMessageType(t discordgo.MessageType) string {
 		return "guild_member_join"
 	case discordgo.MessageTypeReply:
 		return "reply"
-	case discordgo.MessageTypeApplicationCommand:
+	case discordgo.MessageTypeChatInputCommand:
 		return "application_command"
 	default:
 		log.Printf("unsupported message type %v", t)
@@ -160,7 +160,7 @@ func Make(ftype, op string, v interface{}) []string {
 		row = []string{
 			v.ID,
 			v.Author.ID,
-			string(v.EditedTimestamp),
+			v.EditedTimestamp.String(),
 			formatBool("tts", v.TTS),
 			v.Content,
 			formatBool("webhook", v.WebhookID != ""),
