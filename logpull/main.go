@@ -11,10 +11,10 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 
-	"github.com/tsudoko/pullcord/logcache"
-	"github.com/tsudoko/pullcord/logentry"
-	"github.com/tsudoko/pullcord/logutil"
-	"github.com/tsudoko/pullcord/tsv"
+	"github.com/mraof/pullcord/logcache"
+	"github.com/mraof/pullcord/logentry"
+	"github.com/mraof/pullcord/logutil"
+	"github.com/mraof/pullcord/tsv"
 )
 
 type PullError struct {
@@ -219,7 +219,7 @@ func (p *Puller) pullMember(m *discordgo.Member) error {
 	return nil
 }
 
-func (p *Puller) PullDMGuild() error {
+/*func (p *Puller) PullDMGuild() error {
 	chans, err := p.d.UserChannels()
 	if err != nil {
 		return &PullError{"getting DM channels", err}
@@ -243,7 +243,7 @@ func (p *Puller) PullDMGuild() error {
 				delete(p.deleted[logentry.Type(o)], o.ID)
 			}
 		*/
-	}
+	/*}
 
 	p.log.Sync()
 
@@ -257,7 +257,7 @@ func (p *Puller) PullDMGuild() error {
 	}
 
 	return nil
-}
+}*/
 
 func (p *Puller) PullChannel(c *discordgo.Channel) error {
 	after := "0"

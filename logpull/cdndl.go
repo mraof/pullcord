@@ -5,7 +5,7 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 
-	"github.com/tsudoko/pullcord/cdndl"
+	"github.com/mraof/pullcord/cdndl"
 )
 
 const (

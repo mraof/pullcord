@@ -9,7 +9,7 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 
-	"github.com/tsudoko/pullcord/logpull"
+	"github.com/mraof/pullcord/logpull"
 )
 
 var (
@@ -42,6 +42,7 @@ func do(d *discordgo.Session, _ *discordgo.Ready) {
 				if err != nil {
 					log.Fatalf("[%s] %v", c.GuildID, err)
 				}
+        p.lightMode = lightMode
 
 				pullers[c.GuildID] = p
 				err = p.PullGuild(c.GuildID)
@@ -56,7 +57,7 @@ func do(d *discordgo.Session, _ *discordgo.Ready) {
 			}
 		}
 
-		if *dlDM {
+		/*if *dlDM {
 			p, err := logpull.NewPuller(d, "@me")
 			if err != nil {
 				log.Fatalf("[@me] %v", err)
@@ -80,7 +81,7 @@ func do(d *discordgo.Session, _ *discordgo.Ready) {
 					log.Fatalf("[%s/%s] %v", c.GuildID, c.ID, err)
 				}
 			}
-		}
+		}*/
 
 		for id, p := range pullers {
 			if err := p.Close(); err != nil {
@@ -104,7 +105,7 @@ func main() {
 		log.Fatal("no modes specified, nothing to do")
 	}
 
-	d, err := discordgo.New(*username, *password, *token)
+	d, err := discordgo.New(*token)
 	if err != nil {
 		log.Fatal("login failed:", err)
 	}

@@ -5,8 +5,8 @@ import (
 	"io"
 	"os"
 
-	"github.com/tsudoko/pullcord/logentry"
-	"github.com/tsudoko/pullcord/tsv"
+	"github.com/mraof/pullcord/logentry"
+	"github.com/mraof/pullcord/tsv"
 )
 
 type Entries map[string]map[string][]string

@@ -4,9 +4,9 @@ import (
 	"bufio"
 	"os"
 
-	"github.com/tsudoko/pullcord/logcache"
-	"github.com/tsudoko/pullcord/logentry"
-	"github.com/tsudoko/pullcord/tsv"
+	"github.com/mraof/pullcord/logcache"
+	"github.com/mraof/pullcord/logentry"
+	"github.com/mraof/pullcord/tsv"
 )
 
 func LastMessageID(fpath string) (id string, err error) {

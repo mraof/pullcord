@@ -67,7 +67,7 @@ func list(d *discordgo.Session, event *discordgo.Ready) {
 	if *summary {
 		goto exit
 	}
-	{
+	/*{
 		fmt.Println("@me")
 		c, err := d.UserChannels()
 		if err != nil {
@@ -101,7 +101,7 @@ func list(d *discordgo.Session, event *discordgo.Ready) {
 			}
 		}
 
-	}
+	}*/
 exit:
 	os.Exit(0)
 }
@@ -109,7 +109,7 @@ exit:
 func main() {
 	flag.Parse()
 
-	d, err := discordgo.New(*username, *password, *token)
+	d, err := discordgo.New(*token)
 	if err != nil {
 		log.Fatal("login failed:", err)
 	}

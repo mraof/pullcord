@@ -98,7 +98,7 @@ func formatChannelType(t discordgo.ChannelType) string {
 	case discordgo.ChannelTypeGuildStore:
 		return "store"
 	default:
-		log.Panicf("unsupported channel type %v", t)
+		//log.Panicf("unsupported channel type %v", t)
 		return "invalid"
 	}
 }
@@ -157,10 +157,16 @@ func Make(ftype, op string, v interface{}) []string {
 			ref[1] = v.MessageReference.ChannelID
 			ref[2] = v.MessageReference.MessageID
 		}
+    var edited_time string
+    if v.EditedTimestamp == nil {
+      edited_time = ""
+    } else {
+      edited_time = v.EditedTimestamp.String()
+    }
 		row = []string{
 			v.ID,
 			v.Author.ID,
-			v.EditedTimestamp.String(),
+			edited_time,
 			formatBool("tts", v.TTS),
 			v.Content,
 			formatBool("webhook", v.WebhookID != ""),
