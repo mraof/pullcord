@@ -39,8 +39,8 @@ type Puller struct {
 	deleted logcache.IDs     // for tracking deletions between different pulls, cache could be used for that as well
 }
 
-func NewPuller(d *discordgo.Session, gid string) (*Puller, error) {
-	p := &Puller{d: d}
+func NewPuller(d *discordgo.Session, gid string, lightMode bool) (*Puller, error) {
+  p := &Puller{d: d, lightMode: lightMode}
 
 	if err := p.openLog(gid); err != nil {
 		return nil, &PullError{"opening the log file", err}

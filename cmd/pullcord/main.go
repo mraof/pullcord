@@ -38,11 +38,10 @@ func do(d *discordgo.Session, _ *discordgo.Ready) {
 	if *historyMode {
 		for _, c := range channels {
 			if pullers[c.GuildID] == nil {
-				p, err := logpull.NewPuller(d, c.GuildID)
+				p, err := logpull.NewPuller(d, c.GuildID, *lightMode)
 				if err != nil {
 					log.Fatalf("[%s] %v", c.GuildID, err)
 				}
-        p.lightMode = lightMode
 
 				pullers[c.GuildID] = p
 				err = p.PullGuild(c.GuildID)
